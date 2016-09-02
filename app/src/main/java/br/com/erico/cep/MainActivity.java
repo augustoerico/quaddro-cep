@@ -33,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private String json;
 
+    private EditText edtNeighborhood;
+    private EditText edtCity;
+    private EditText edtStreet;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
 
         // Passo 2 - Vincular os componentes graficos
         edtZip = (EditText) findViewById(R.id.edtZip);
+
+        edtNeighborhood = (EditText) findViewById(R.id.edtNeighborhood);
+        edtStreet = (EditText) findViewById(R.id.edtStreet);
+        edtCity = (EditText) findViewById(R.id.edtCity);
     }
 
     public void onSearchZip(final View view) {
@@ -118,6 +126,10 @@ public class MainActivity extends AppCompatActivity {
                             Log.i("CEP", jsonObject.getString("cidade"));
                             Log.i("CEP", jsonObject.getString("cep"));
                             Log.i("CEP", jsonObject.getString("logradouro"));
+
+                            edtNeighborhood.setText(jsonObject.getString("bairro"));
+                            edtCity.setText(jsonObject.getString("cidade"));
+                            edtStreet.setText(jsonObject.getString("logradouro"));
 
                         } catch (Exception e) {
 
